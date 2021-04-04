@@ -16,7 +16,7 @@
 		
 
 		
-		String sql="insert into example(phoneNumber, pw, course, address, birthday, name) values(?,?,?,?,?,?,?)";
+		String sql="insert into example(phoneNumber, pw, course, address, birthday, name) values(?,?,?,?,?,?)";
 		PreparedStatement ps = con.prepareStatement(sql);
 		
 	
