@@ -18,8 +18,6 @@
 		
 		String sql="insert into example(phoneNumber, pw, course, address, birthday, name) values(?,?,?,?,?,?)";
 		PreparedStatement ps = con.prepareStatement(sql);
-		
-	
 		ps.setString(1, phoneNumber);
 		ps.setString(2, pw);
 		ps.setString(3, course);

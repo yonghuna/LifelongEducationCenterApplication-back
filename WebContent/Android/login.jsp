@@ -12,6 +12,9 @@
 		String pw = request.getParameter("pw");
 		
 		
+		JSONArray jArray = new JSONArray();
+		JSONObject jObject = new JSONObject();
+		
 		try{
 			String sql ="SELECT * FROM example where name = ?";
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -19,20 +22,32 @@
 			System.out.println(" >>> SQL : " + sql + "<<<");
 			ResultSet rs = ps.executeQuery();
 			
-			JSONObject object = new JSONObject();
+		
 			if(rs.next()) {
 				if (rs.getString("phoneNumber").equals(phoneNumber)){
+					
 					if(rs.getString("pw").equals(pw)){
-						object.put("name", rs.getString("name"));
-						object.put("phoneNumber", rs.getString("phoneNumber"));
-						object.put("pw", rs.getString("pw"));
+						jObject.put("result", "ok");
+						jArray.add(jObject);
+						System.out.println("ok");
+					}
+					else{
+						jObject.put("result", "false");
+						jArray.add(jObject);
+						System.out.println("error");
 					}
 				}
+				else{
+					jObject.put("result", "false");
+					jArray.add(jObject);
+					System.out.println("error");
+				}
+			
 			}
-			out.print(object.toJSONString());
 		}catch (Exception e){
+			System.out.println("SQL 오류");
 			response.setStatus(400);
 		}
-		
+		out.println(jArray);
 		
 %>
