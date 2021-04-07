@@ -48,6 +48,6 @@
 			System.out.println("SQL 오류");
 			response.setStatus(400);
 		}
-		out.println(jArray);
+		out.println(jArray.toJSONString());
 		
 %>
