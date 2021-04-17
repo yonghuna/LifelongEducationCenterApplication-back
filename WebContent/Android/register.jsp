@@ -9,7 +9,7 @@
 		JSONObject jObject = new JSONObject();
 	
 		Class.forName("com.mysql.jdbc.Driver");
-		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/lifelongeducationcenterapp", "root", "0000");
+		Connection con = DriverManager.getConnection("jdbc:mysql://3.35.11.204/LifeLongEducation", "finalproject", "3579");
 		
 		
 		String course = request.getParameter("course");
@@ -18,6 +18,8 @@
 		String phoneNumber = request.getParameter("phoneNumber"); 
 		String address = request.getParameter("address"); 
 		String pw = request.getParameter("pw");
+		String addressnumber = request.getParameter("addressNumber");
+		String detailedAddress = request.getParameter("detailedAddress");
 		
 		System.out.println(phoneNumber);
 		System.out.println(pw);
@@ -25,17 +27,21 @@
 		System.out.println(address);
 		System.out.println(birthday);
 		System.out.println(name);
+		System.out.println(addressnumber);
+		System.out.println(detailedAddress);
 		
 	
 		try{
-			String sql="insert into example(phoneNumber, pw, course, address, birthday, name) values(?,?,?,?,?,?)";
+			String sql="insert into user(phonenumber, password, course, addressnumber, address, detailedaddress, birth, name) values(?,?,?,?,?,?,?,?)";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, phoneNumber);
 			ps.setString(2, pw);
 			ps.setString(3, course);
-			ps.setString(4, address);
-			ps.setString(5, birthday);
-			ps.setString(6, name);
+			ps.setString(4, addressnumber);
+			ps.setString(5, address);
+			ps.setString(6, detailedAddress);
+			ps.setString(7, birthday);
+			ps.setString(8, name);
 			ps.execute();
 			jObject.put("result", "ok");
 			jArray.add(jObject);
@@ -48,5 +54,6 @@
 		
 	}catch(Exception e){
 		response.setStatus(400);
+		
 	}
 %>

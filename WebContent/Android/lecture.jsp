@@ -4,7 +4,7 @@
 	response.setCharacterEncoding("UTF-8");
 	try{
 		Class.forName("com.mysql.jdbc.Driver");
-		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/lifelongeducationcenterapp", "root", "0000");
+		Connection con = DriverManager.getConnection("jdbc:mysql://3.35.11.204/LifeLongEducation", "finalproject", "3579");
 		
 		String sql ="select * from lecture";
 		PreparedStatement ps = con.prepareStatement(sql);
