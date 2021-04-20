@@ -21,12 +21,12 @@
 		String addressnumber = request.getParameter("addressNumber");
 		String detailedAddress = request.getParameter("detailedAddress");
 		
-		System.out.println(phoneNumber);
-		System.out.println(pw);
 		System.out.println(course);
-		System.out.println(address);
-		System.out.println(birthday);
 		System.out.println(name);
+		System.out.println(birthday);
+		System.out.println(phoneNumber);
+		System.out.println(address);
+		System.out.println(pw);
 		System.out.println(addressnumber);
 		System.out.println(detailedAddress);
 		
@@ -54,6 +54,6 @@
 		
 	}catch(Exception e){
 		response.setStatus(400);
-		
+		System.out.println("db connecton false");
 	}
 %>
