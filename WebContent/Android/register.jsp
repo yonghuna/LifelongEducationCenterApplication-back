@@ -9,7 +9,7 @@
 		JSONObject jObject = new JSONObject();
 	
 		Class.forName("com.mysql.jdbc.Driver");
-		Connection con = DriverManager.getConnection("jdbc:mysql://3.35.11.204/LifeLongEducation", "finalproject", "3579");
+		Connection con = DriverManager.getConnection("jdbc:mysql://54.180.105.45:3306/LifeLongEducation", "finalproject", "3579");
 		
 		
 		String course = request.getParameter("course");

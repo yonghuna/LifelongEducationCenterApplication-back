@@ -4,7 +4,7 @@
 	response.setCharacterEncoding("UTF-8");
 	
 		Class.forName("com.mysql.jdbc.Driver");
-		Connection con = DriverManager.getConnection("jdbc:mysql://3.35.11.204/LifeLongEducation", "finalproject", "3579");
+		Connection con = DriverManager.getConnection("jdbc:mysql://54.180.105.45:3306/LifeLongEducation", "finalproject", "3579");
 		
 		
 		String name = request.getParameter("name");
@@ -16,7 +16,7 @@
 		JSONObject jObject = new JSONObject();
 		
 		try{
-			String sql ="SELECT user FROM user where name = ?";
+			String sql ="SELECT * FROM user where name = ?";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, name);
 			System.out.println(" >>> SQL : " + sql + "<<<");
@@ -28,6 +28,7 @@
 					
 					if(rs.getString("password").equals(pw)){
 						jObject.put("id",rs.getString("id"));
+						jObject.put("course",rs.getString("course")); 
 						jArray.add(jObject);
 						System.out.println("ok");
 					}

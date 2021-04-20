@@ -2,7 +2,6 @@
 
 <%
 	response.setCharacterEncoding("UTF-8");
-
 	try{
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection con = DriverManager.getConnection("jdbc:mysql://54.180.105.45:3306/LifeLongEducation", "finalproject", "3579");
@@ -10,20 +9,22 @@
 		PreparedStatement ps;
 		ResultSet rs;
 		
-		String division = request.getParameter("division");
-		String sql ="select * from subject where division = ?" ;
+		String number = request.getParameter("number");
+		String sql ="select * from subject where number = ?" ;
 		
 	
+	
 		ps = con.prepareStatement(sql);
-		ps.setString(1, division);
+		ps.setString(1, number);
 		System.out.println(" >>> SQL : " + sql + "<<<");
-		System.out.println(division);
+		System.out.println(number);
 		rs = ps.executeQuery();
 		
-		
+		System.out.println(number);
 		JSONArray array = new JSONArray();
+		JSONObject object = new JSONObject();
 		while(rs.next()){
-			JSONObject object = new JSONObject();
+			
 			object.put("name",rs.getString("name"));
 			object.put("startdate",rs.getString("startdate"));
 			object.put("enddate",rs.getString("enddate"));
@@ -32,16 +33,18 @@
 			object.put("endtime",rs.getString("endtime"));
 			object.put("dayoftheweek",rs.getString("dayoftheweek"));
 			object.put("professor",rs.getString("professor"));
-			object.put("status",rs.getString("status"));
-			object.put("number",rs.getInt("number"));
+			object.put("briefhistory", rs.getString("briefhistory"));
+			object.put("introduce", rs.getString("introduce"));
+			object.put("datedetail", rs.getString("datedetail"));
+			object.put("status", rs.getString("status"));
 			
+	
 			array.add(object);
+			System.out.println("lecture detail ok");
 		}
 		out.print(array.toJSONString());
-		System.out.println("0");
 	}catch(Exception e){
 		response.setStatus(400);
-		System.out.println("error : " + e);
-		
+		System.out.println("detail error" + e);
 	}
 %>
