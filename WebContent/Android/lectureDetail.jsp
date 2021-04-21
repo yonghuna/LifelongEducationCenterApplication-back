@@ -1,10 +1,11 @@
+<%@page import="com.db.ConnectDB"%>
 <%@ page import= "java.sql.*, org.json.simple.*" %>
 
 <%
 	response.setCharacterEncoding("UTF-8");
 	try{
 		Class.forName("com.mysql.jdbc.Driver");
-		Connection con = DriverManager.getConnection("jdbc:mysql://54.180.105.45:3306/LifeLongEducation", "finalproject", "3579");
+		Connection con = DriverManager.getConnection("jdbc:mysql://" + ConnectDB.ip +"/LifeLongEducation", "finalproject", "3579");
 		
 		PreparedStatement ps;
 		ResultSet rs;
