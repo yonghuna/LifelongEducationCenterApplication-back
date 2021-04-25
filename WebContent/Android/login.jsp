@@ -33,6 +33,7 @@
 			object.put("result", "ok");
 			object.put("id",rs.getString("id"));
 			object.put("course",rs.getString("course"));
+			object.put("name",rs.getString("name"));
 			System.out.println("login OK");
 				
 		}else{
