@@ -10,38 +10,35 @@
 		
 		
 		String name = request.getParameter("name");
-		String phoneNumber = request.getParameter("phoneNumber"); 
-		String pw = request.getParameter("password");
+		String birth = request.getParameter("birth"); 
+		String sex = request.getParameter("sex");
 		
 		System.out.println(name);
-		System.out.println(phoneNumber);
-		System.out.println(pw);
+		System.out.println(birth);
+		System.out.println(sex);
 	
 		
 	
-		String sql ="SELECT * FROM user where name = ? and phonenumber = ? and password = ?";
+		String sql ="SELECT * FROM user where name = ? and birth = ? and sex = ?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, name);
-		ps.setString(2, phoneNumber);
-		ps.setString(3, pw);
+		ps.setString(2, birth);
+		ps.setString(3, sex);
 		ResultSet rs = ps.executeQuery();
 			
 		
-		
-		
 		if(rs.next()){
-			object.put("result", "ok");
-			object.put("id",rs.getString("id"));
-			object.put("course",rs.getString("course"));
-			System.out.println("login OK");
+			object.put("result", "have");
+			System.out.println("check false");
 				
 		}else{
-			object.put("result", "false");
+			System.out.println("check ok");
+			object.put("result", "ok");
 		}
 		
 			
 	}catch (Exception e){
-		object.put("result", "false");
+		object.put("result", "id");
 		System.out.println("SQL 오류 : " + e);
 	}
 	out.print(object.toJSONString());

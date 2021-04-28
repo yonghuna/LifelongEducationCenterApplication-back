@@ -34,7 +34,10 @@
 			object.put("dayoftheweek",rs.getString("dayoftheweek"));
 			object.put("professor",rs.getString("professor"));
 			object.put("status",rs.getString("status"));
+			object.put("division",rs.getString("division"));
 			object.put("number",rs.getInt("number"));
+			object.put("year",rs.getInt("year"));
+			object.put("semester",rs.getInt("semester"));
 			
 			array.add(object);
 		}

@@ -13,8 +13,6 @@
 		String number = request.getParameter("number");
 		String sql ="select week, contents from subjectbyweek where number = ?" ;
 		
-	
-	
 		ps = con.prepareStatement(sql);
 		ps.setString(1, number);
 		System.out.println(" >>> SQL : " + sql + "<<<");
