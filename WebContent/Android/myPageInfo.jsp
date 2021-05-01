@@ -30,7 +30,12 @@
 			object.put("phonenumber",rs.getString("phonenumber"));
 			object.put("addressnumber",rs.getString("addressnumber"));
 			object.put("address",rs.getString("address"));
-			object.put("detailedaddress",rs.getString("detailedaddress"));		
+			object.put("detailedaddress",rs.getString("detailedaddress"));
+			object.put("education",rs.getString("education"));	
+			object.put("school",rs.getString("school"));	
+			object.put("major",rs.getString("major"));
+			object.put("admissionmajor",rs.getString("admissionmajor"));
+			
 		
 		}
 		out.print(object.toJSONString());

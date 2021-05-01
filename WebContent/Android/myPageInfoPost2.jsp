@@ -16,11 +16,16 @@
 		 
 		
 		String pwOK = request.getParameter("pwOK"); 
-		String phoneNumber = request.getParameter("phoneNumber"); 
+		String phoneNumber = request.getParameter("phonenumber"); 
 		String address = request.getParameter("address"); 
 		String addressnumber = request.getParameter("addressnumber");
 		String detailedAddress = request.getParameter("detailedaddress");
 		String id = request.getParameter("id");
+		String education = request.getParameter("education");
+		String school = request.getParameter("school");
+		String major = request.getParameter("major");
+		String admissionmajor = request.getParameter("admissionmajor");
+		String password = request.getParameter("password");
 		 
 		
 		System.out.println(id);
@@ -29,18 +34,27 @@
 		System.out.println(pwOK);
 		System.out.println(addressnumber);
 		System.out.println(detailedAddress);
-		
+		System.out.println(education);
+		System.out.println(school);
+		System.out.println(major);
+		System.out.println(admissionmajor);
+		System.out.println(password);
 		
 	
 		try{
-			String sql="INSERT INTO users (NAME, email) VALUES ('tez', 'tez@tez.kr') ON DUPLICATE KEY UPDATE name='tez'";
-
+			String sql="update INTO users (password, phonenumber, birth, address, detailedaddress,addressnumber, education, school, major, admissionmajor) VALUES (?,?,?,?,?,?,?,?,?,?) where id = ?";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, phoneNumber);
-		
-			ps.setString(3, addressnumber);
-			ps.setString(4, address);
-			ps.setString(5, detailedAddress);
+			ps.setString(2, phoneNumber);
+			ps.setString(3, phoneNumber);
+			ps.setString(4, phoneNumber);
+			ps.setString(5, phoneNumber);
+			ps.setString(6, phoneNumber);
+			ps.setString(7, phoneNumber);
+			ps.setString(8, phoneNumber);
+			ps.setString(9, phoneNumber);
+			ps.setString(10, phoneNumber);
+			ps.setString(11, id);
 			ps.execute();
 			jObject.put("result", "ok");
 			System.out.println("update ok");

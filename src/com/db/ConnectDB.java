@@ -13,7 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ConnectDB {
-	 public static String ip = "54.180.105.45:3306";
+	 public static String ip = "54.180.118.86:3306";
 }
 
 
