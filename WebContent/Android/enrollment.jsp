@@ -14,23 +14,23 @@
 		System.out.println(id);
 		
 		
-		String sql ="select R.id, K.name , R.subjectnumber, R.subjectyear, R.subjectsemester, R.subjectdivision, R.payment, R.grade,R.Certificaterealname,R.Certificaterandomname,R.Certificatepath from enrollment as R, subject as K where R.subjectnumber = K.number and R.id = ?";
+		String sql ="select K.name , R.subjectnumber, R.subjectyear, R.subjectsemester,  R.payment, R.grade,R.Certificaterealname,R.Certificaterandomname,R.Certificatepath from enrollment as R, subject as K where R.subjectnumber = K.number and R.id = ?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, id);
 		ResultSet rs = ps.executeQuery();
 		JSONArray array = new JSONArray();
 		while(rs.next()){		
 			JSONObject object = new JSONObject();
+			object.put("name",rs.getString("name"));
 			object.put("subjectnumber",rs.getString("subjectnumber"));
 			object.put("subjectyear",rs.getString("subjectyear"));
 			object.put("subjectsemester",rs.getString("subjectsemester"));
-			object.put("grade",rs.getString("grade"));
 			object.put("payment",rs.getString("payment"));
-			
-			
+			object.put("grade",rs.getString("grade"));
+			object.put("Certificaterealname",rs.getString("Certificaterealname"));
+			object.put("Certificatepath",rs.getString("Certificatepath"));		
 			System.out.println("ok");
-			array.add(object);
-				
+			array.add(object);			
 		}
 		out.print(array.toJSONString());
 		
