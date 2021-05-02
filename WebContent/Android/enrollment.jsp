@@ -27,7 +27,7 @@
 			object.put("grade",rs.getString("grade"));
 			object.put("payment",rs.getString("payment"));
 			object.put("Certificaterealname",rs.getString("Certificaterealname"));
-			object.put("Certificaterandomname",rs.getString("Certificaterandomname"));
+			
 			System.out.println("ok");
 			array.add(object);
 				
