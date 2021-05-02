@@ -57,6 +57,7 @@
 				ps.setString(8, major);
 				ps.setString(9, addressnumber);
 				ps.setString(10, id);
+				ps.execute();
 				jObject.put("result", "ok");
 				System.out.println("update ok");
 			}else {

@@ -14,7 +14,7 @@
 		System.out.println(id);
 		
 		
-		String sql = "SELECT * FROM enrollment where id = ?";
+		String sql ="select R.id, K.name , R.subjectnumber, R.subjectyear, R.subjectsemester, R.subjectdivision, R.payment, R.grade,R.Certificaterealname,R.Certificaterandomname,R.Certificatepath from enrollment as R, subject as K where R.subjectnumber = K.number and R.id = ?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, id);
 		ResultSet rs = ps.executeQuery();
