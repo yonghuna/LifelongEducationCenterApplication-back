@@ -15,7 +15,7 @@
 		
 		
 		String pwOK = request.getParameter("pwOK"); 
-		String phoneNumber = request.getParameter("phoneNumber"); 
+		String phoneNumber = request.getParameter("phonenumber"); 
 		String address = request.getParameter("address"); 
 		String addressnumber = request.getParameter("addressnumber");
 		String detailedAddress = request.getParameter("detailedaddress");

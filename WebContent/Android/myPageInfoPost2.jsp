@@ -25,7 +25,7 @@
 		String school = request.getParameter("school");
 		String major = request.getParameter("major");
 		String admissionmajor = request.getParameter("admissionmajor");
-		String password = request.getParameter("password");
+		
 		 
 		
 		System.out.println(id);
@@ -38,26 +38,44 @@
 		System.out.println(school);
 		System.out.println(major);
 		System.out.println(admissionmajor);
-		System.out.println(password);
+		
 		
 	
 		try{
-			String sql="update INTO users (password, phonenumber, birth, address, detailedaddress,addressnumber, education, school, major, admissionmajor) VALUES (?,?,?,?,?,?,?,?,?,?) where id = ?";
-			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, phoneNumber);
-			ps.setString(2, phoneNumber);
-			ps.setString(3, phoneNumber);
-			ps.setString(4, phoneNumber);
-			ps.setString(5, phoneNumber);
-			ps.setString(6, phoneNumber);
-			ps.setString(7, phoneNumber);
-			ps.setString(8, phoneNumber);
-			ps.setString(9, phoneNumber);
-			ps.setString(10, phoneNumber);
-			ps.setString(11, id);
-			ps.execute();
-			jObject.put("result", "ok");
-			System.out.println("update ok");
+			if(pwOK.equals("ok")){
+				String password = request.getParameter("password");
+				System.out.println(password);
+				String sql="update user set password = ?, phonenumber = ?, address = ?, detailedaddress = ?,addressnumber = ?, education = ?, school = ?, major = ?, admissionmajor = ? where id = ?";
+				PreparedStatement ps = con.prepareStatement(sql);
+				ps.setString(1, password);
+				ps.setString(2, phoneNumber);
+				ps.setString(3, address);
+				ps.setString(4, detailedAddress);
+				ps.setString(5, addressnumber);
+				ps.setString(6, education);
+				ps.setString(7, school);
+				ps.setString(8, major);
+				ps.setString(9, addressnumber);
+				ps.setString(10, id);
+				jObject.put("result", "ok");
+				System.out.println("update ok");
+			}else {
+				String sql="update user set phonenumber = ?, address = ?, detailedaddress = ?,addressnumber = ?, education = ?, school = ?, major = ?, admissionmajor = ? where id = ?";
+				PreparedStatement ps = con.prepareStatement(sql);
+				ps.setString(1, phoneNumber);
+				ps.setString(2, address);
+				ps.setString(3, detailedAddress);
+				ps.setString(4, addressnumber);
+				ps.setString(5, education);
+				ps.setString(6, school);
+				ps.setString(7, major);
+				ps.setString(8, addressnumber);
+				ps.setString(9, id);
+				ps.execute();
+				jObject.put("result", "ok");
+				System.out.println("update ok");
+			}
+		
 		}catch(Exception e){
 			jObject.put("result", "false");
 			System.out.println("update false : " + e);

@@ -3,8 +3,7 @@
 
 <%
 	response.setCharacterEncoding("UTF-8");
-	JSONArray array = new JSONArray();
-	JSONObject object = new JSONObject();
+	
 	try{
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection con = DriverManager.getConnection("jdbc:mysql://" + ConnectDB.ip+ "/LifeLongEducation", "finalproject", "3579");
@@ -19,21 +18,26 @@
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, id);
 		ResultSet rs = ps.executeQuery();
-			
-		if(rs.next()){		
+		JSONArray array = new JSONArray();
+		while(rs.next()){		
+			JSONObject object = new JSONObject();
 			object.put("subjectnumber",rs.getString("subjectnumber"));
-			System.out.println("false");
+			object.put("subjectyear",rs.getString("subjectyear"));
+			object.put("subjectsemester",rs.getString("subjectsemester"));
+			object.put("grade",rs.getString("grade"));
+			object.put("payment",rs.getString("payment"));
+			object.put("Certificaterealname",rs.getString("Certificaterealname"));
+			object.put("Certificaterandomname",rs.getString("Certificaterandomname"));
+			System.out.println("ok");
 			array.add(object);
 				
-		}else{
-			System.out.println("check ok");		
 		}
+		out.print(array.toJSONString());
 		
-			
 	}catch (Exception e){
 		System.out.println("SQL 오류 : " + e);
 	}
-	out.print(array.toJSONString());
+	
 	
 	
 			
