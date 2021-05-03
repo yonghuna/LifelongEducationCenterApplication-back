@@ -37,8 +37,9 @@
 			object.put("introduce", rs.getString("introduce"));
 			object.put("datedetail", rs.getString("datedetail"));
 			object.put("status", rs.getString("status"));
+			object.put("yaer", rs.getInt("year"));
+			object.put("semester", rs.getInt("semester"));
 			
-	
 			array.add(object);
 			System.out.println("lecture detail ok");
 		}
