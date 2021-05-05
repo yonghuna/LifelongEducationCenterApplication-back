@@ -3,26 +3,28 @@
 
 <%
 	response.setCharacterEncoding("UTF-8");
-
+	JSONObject object = new JSONObject();
 	try{
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection con = DriverManager.getConnection("jdbc:mysql://" + ConnectDB.ip +"/LifeLongEducation", "finalproject", "3579");
 		
-		PreparedStatement ps;
+	
 		ResultSet rs;
 		
+		String number= request.getParameter("number");
+		System.out.println(number);
+		String sql ="select * from notice where number = ?";
 	
-		String sql ="select * from notice" ;
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, number);
 		
-	
-		ps = con.prepareStatement(sql);
 		System.out.println(" >>> SQL : " + sql + "<<<");
 		rs = ps.executeQuery();
 		
 		
-		JSONArray array = new JSONArray();
-		while(rs.next()){
-			JSONObject object = new JSONObject();
+	
+		if(rs.next()){
+			
 			object.put("number",rs.getString("number"));
 			object.put("title",rs.getString("title"));
 			object.put("reportingdate",rs.getString("reportingdate"));
@@ -30,10 +32,9 @@
 			object.put("contents",rs.getString("contents"));
 			object.put("important",rs.getString("important"));
 			
-			array.add(object);
 		}
-		out.print(array.toJSONString());
-		System.out.println("notice ok");
+		out.print(object.toJSONString());
+		System.out.println("noticeEnter ok");
 	}catch(Exception e){
 		response.setStatus(400);
 		System.out.println("error : " + e);
