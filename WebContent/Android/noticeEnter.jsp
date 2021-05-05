@@ -30,7 +30,7 @@
 			object.put("reportingdate",rs.getString("reportingdate"));
 			object.put("views",rs.getString("views"));
 			object.put("contents",rs.getString("contents"));
-			object.put("important",rs.getString("important"));
+			
 			
 		}
 		out.print(object.toJSONString());
