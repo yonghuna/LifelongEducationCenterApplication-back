@@ -12,7 +12,7 @@
 		ResultSet rs;
 		
 	
-		String sql ="select * from notice" ;
+		String sql ="Select Q.*, U.name from qna as Q, user as U where Q.id = U.id and Q.secret = 'false'" ;
 		
 	
 		ps = con.prepareStatement(sql);
@@ -28,10 +28,11 @@
 			object.put("reportingdate",rs.getString("reportingdate"));
 			object.put("views",rs.getString("views"));
 			object.put("contents",rs.getString("contents"));
+			object.put("name",rs.getString("name"));
 			array.add(object);
 		}
 		out.print(array.toJSONString());
-		System.out.println("notice ok");
+		System.out.println("qna ok");
 	}catch(Exception e){
 		response.setStatus(400);
 		System.out.println("error : " + e);
