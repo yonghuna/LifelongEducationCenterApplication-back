@@ -12,7 +12,7 @@
 		ResultSet rs;
 		
 		//String division = request.getParameter("division");
-		String sql ="select S.name, S.division, K.divisiondetail,S.startdate,S.enddate from subject as S, subjectkind as K where S.division=K.division and S.status = "+"?"+" limit 5";
+		String sql ="select S.name, S.number,S.division, K.divisiondetail,S.startdate,S.enddate from subject as S, subjectkind as K where S.division=K.division and S.status = "+"?"+" limit 5";
 		
 	
 		ps = con.prepareStatement(sql);
@@ -29,6 +29,7 @@
 			object.put("divisiondetail",rs.getString("divisiondetail"));
 			object.put("startdate",rs.getString("startdate"));
 			object.put("enddate",rs.getString("enddate"));
+			object.put("number",rs.getInt("number"));
 			array.add(object);
 		}
 		out.print(array.toJSONString());

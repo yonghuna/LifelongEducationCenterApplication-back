@@ -12,7 +12,7 @@
 		ResultSet rs;
 		
 	
-		String sql ="Select Q.*, U.name from qna as Q, user as U where Q.id = U.id and Q.secret = 'false'" ;
+		String sql ="Select Q.*, U.name, U.id from qna as Q, user as U where Q.id = U.id and Q.secret = 'false'" ;
 		
 	
 		ps = con.prepareStatement(sql);
@@ -29,6 +29,7 @@
 			object.put("views",rs.getString("views"));
 			object.put("contents",rs.getString("contents"));
 			object.put("name",rs.getString("name"));
+			object.put("id",rs.getString("id"));
 			array.add(object);
 		}
 		out.print(array.toJSONString());
