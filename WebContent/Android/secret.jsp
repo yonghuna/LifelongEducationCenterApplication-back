@@ -10,13 +10,14 @@
 		
 		PreparedStatement ps;
 		ResultSet rs;
-		
+		String id = request.getParameter("id");
 	
-		String sql ="select * from notice limit 5" ;
+		String sql ="Select Q.*, U.name, U.id from qna as Q, user as U where Q.id = U.id and Q.secret = 'true' and Q.id = ?" ;
 		
 	
 		ps = con.prepareStatement(sql);
 		System.out.println(" >>> SQL : " + sql + "<<<");
+		ps.setString(1, id);
 		rs = ps.executeQuery();
 		
 		
@@ -28,10 +29,12 @@
 			object.put("reportingdate",rs.getString("reportingdate"));
 			object.put("views",rs.getString("views"));
 			object.put("contents",rs.getString("contents"));
+			object.put("name",rs.getString("name"));
+			object.put("id",rs.getString("id"));
 			array.add(object);
 		}
 		out.print(array.toJSONString());
-		System.out.println("notice ok");
+		System.out.println("qna ok");
 	}catch(Exception e){
 		response.setStatus(400);
 		System.out.println("error : " + e);

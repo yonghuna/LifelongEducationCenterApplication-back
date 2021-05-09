@@ -13,7 +13,7 @@
 		
 		String number = request.getParameter("number");
 		System.out.println(number);
-		String sql ="Select Q.*, U.name from qna as Q, user as U where Q.id = U.id and Q.secret = 'false' and Q.number = ?";
+		String sql ="Select Q.*, U.name from qna as Q, user as U where Q.id = U.id and Q.number = ?";
 	
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, number);
