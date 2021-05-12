@@ -28,7 +28,7 @@
 		
 	
 		try{
-			String sql="insert into enrollment(id, subjectnumber, subjectyear, subjectsemester, subjectdivision) values(?,?,?,?,?)";
+			String sql="insert into enrollment(id, subjectnumber, subjectyear, subjectsemester, subjectdivision,paymentnumber) values(?,?,?,?,?,uuid())";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, id);
 			ps.setString(2, subjectnumber);
