@@ -14,7 +14,7 @@
 		System.out.println(id);
 		
 		
-		String sql ="select K.name , R.subjectnumber, R.subjectyear, R.subjectsemester,  R.payment, R.grade,R.Certificaterealname,R.Certificaterandomname,R.Certificatepath from enrollment as R, subject as K where R.subjectnumber = K.number and R.id = ?";
+		String sql ="select K.name , K.division, K.startdate, K.enddate, R.subjectnumber, R.subjectyear, R.subjectsemester,  R.payment, R.grade,R.Certificaterealname,R.Certificaterandomname,R.Certificatepath from enrollment as R, subject as K where R.subjectnumber = K.number and R.id = ?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, id);
 		ResultSet rs = ps.executeQuery();
@@ -22,6 +22,9 @@
 		while(rs.next()){		
 			JSONObject object = new JSONObject();
 			object.put("name",rs.getString("name"));
+			object.put("division",rs.getString("division"));
+			object.put("startdate",rs.getString("startdate"));
+			object.put("enddate",rs.getString("enddate"));
 			object.put("subjectnumber",rs.getString("subjectnumber"));
 			object.put("subjectyear",rs.getString("subjectyear"));
 			object.put("subjectsemester",rs.getString("subjectsemester"));
@@ -35,7 +38,7 @@
 		out.print(array.toJSONString());
 		
 	}catch (Exception e){
-		System.out.println("SQL 오류 : " + e);
+		System.out.println("SQL error : " + e);
 	}
 	
 	
