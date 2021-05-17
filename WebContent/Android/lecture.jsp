@@ -12,8 +12,8 @@
 		ResultSet rs;
 		
 		String division = request.getParameter("division");
-		String sql ="select * from subject where division = ?" ;
-		
+
+		String sql ="select * from subject where division = ?";
 	
 		ps = con.prepareStatement(sql);
 		ps.setString(1, division);
@@ -38,11 +38,11 @@
 			object.put("number",rs.getInt("number"));
 			object.put("year",rs.getInt("year"));
 			object.put("semester",rs.getInt("semester"));
-			
+			System.out.println("ok");
 			array.add(object);
 		}
 		out.print(array.toJSONString());
-		System.out.println("0");
+		System.out.println("ok");
 	}catch(Exception e){
 		response.setStatus(400);
 		System.out.println("error : " + e);
