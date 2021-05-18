@@ -20,7 +20,8 @@ JSONObject jObject = new JSONObject();
 		String pw = request.getParameter("pw");
 		String addressnumber = request.getParameter("addressNumber");
 		String detailedAddress = request.getParameter("detailedAddress");
-		String sex = request.getParameter("sex"); 
+		String sex = request.getParameter("sex");
+		String token = request.getParameter("token");
 		
 		System.out.println(course);
 		System.out.println(name);
@@ -31,10 +32,11 @@ JSONObject jObject = new JSONObject();
 		System.out.println(addressnumber);
 		System.out.println(detailedAddress);
 		System.out.println(sex);
+		System.out.println(token);
 		
 	
 		try{
-			String sql="insert into user(phonenumber, password, course, addressnumber, address, detailedaddress, birth, name, sex) values(?,?,?,?,?,?,?,?,?)";
+			String sql="insert into user(phonenumber, password, course, addressnumber, address, detailedaddress, birth, name, sex, token) values(?,?,?,?,?,?,?,?,?,?)";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, phoneNumber);
 			ps.setString(2, pw);
@@ -45,6 +47,7 @@ JSONObject jObject = new JSONObject();
 			ps.setString(7, birthday);
 			ps.setString(8, name);
 			ps.setString(9, sex);
+			ps.setString(10, token);
 			ps.execute();
 			jObject.put("result", "ok");
 			System.out.println("ok");
