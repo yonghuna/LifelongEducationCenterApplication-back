@@ -14,7 +14,7 @@
 		System.out.println(number);
 		
 		
-		String sql ="select * from gallery_attachment where id = ?";
+		String sql ="select * from gallery_attachment where number = ?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, number);
 		ResultSet rs = ps.executeQuery();

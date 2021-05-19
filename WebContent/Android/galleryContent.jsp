@@ -3,35 +3,36 @@
 
 <%
 	response.setCharacterEncoding("UTF-8");
-
+	JSONObject object = new JSONObject();
 	try{
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection con = DriverManager.getConnection("jdbc:mysql://" + ConnectDB.ip +"/LifeLongEducation", "finalproject", "3579");
 		
-		PreparedStatement ps;
+	
 		ResultSet rs;
 		
+		int number= Integer.parseInt(request.getParameter("number"));
+		System.out.println(number);
+		String sql ="select * from gallery where number = ?";
 	
-		String sql ="select * from notice" ;
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, number);
 		
-	
-		ps = con.prepareStatement(sql);
 		System.out.println(" >>> SQL : " + sql + "<<<");
 		rs = ps.executeQuery();
 		
 		
-		JSONArray array = new JSONArray();
-		while(rs.next()){
-			JSONObject object = new JSONObject();
-			object.put("number",rs.getString("number"));
+	
+		if(rs.next()){
+			
+			object.put("number",rs.getInt("number"));
 			object.put("title",rs.getString("title"));
 			object.put("reportingdate",rs.getString("reportingdate"));
-			object.put("views",rs.getString("views"));
-			object.put("contents",rs.getString("contents"));
-			array.add(object);
+			object.put("views",rs.getString("views"));		
+			
 		}
-		out.print(array.toJSONString());
-		System.out.println("notice ok");
+		out.print(object.toJSONString());
+		System.out.println("noticeEnter ok");
 	}catch(Exception e){
 		response.setStatus(400);
 		System.out.println("error : " + e);

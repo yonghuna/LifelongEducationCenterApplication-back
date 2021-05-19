@@ -12,7 +12,7 @@
 		ResultSet rs;
 		
 	
-		String sql ="select * from notice" ;
+		String sql ="select * from format" ;
 		
 	
 		ps = con.prepareStatement(sql);
@@ -31,7 +31,7 @@
 			array.add(object);
 		}
 		out.print(array.toJSONString());
-		System.out.println("notice ok");
+		System.out.println("format ok");
 	}catch(Exception e){
 		response.setStatus(400);
 		System.out.println("error : " + e);

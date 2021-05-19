@@ -12,7 +12,7 @@
 		ResultSet rs;
 		
 	
-		String sql ="select * from notice" ;
+		String sql ="select * from gallery" ;
 		
 	
 		ps = con.prepareStatement(sql);
