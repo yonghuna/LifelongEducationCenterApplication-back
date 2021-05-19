@@ -12,7 +12,7 @@
 		ResultSet rs;
 		
 	
-		String sql ="select * from notice lites 3" ;
+		String sql ="select * from notice limit 2" ;
 		
 	
 		ps = con.prepareStatement(sql);
