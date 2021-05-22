@@ -14,7 +14,7 @@
 		System.out.println(number);
 		
 		
-		String sql ="select * from format_attachment where id = ?";
+		String sql ="select * from format_attachment where number = ?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, number);
 		ResultSet rs = ps.executeQuery();
@@ -26,7 +26,7 @@
 			object.put("realname",rs.getString("realname"));
 			object.put("path",rs.getString("path"));
 			object.put("size",rs.getString("size"));	
-			System.out.println("format ok");
+			System.out.println("format file ok");
 			array.add(object);			
 		}
 		out.print(array.toJSONString());

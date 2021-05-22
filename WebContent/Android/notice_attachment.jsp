@@ -14,7 +14,7 @@
 		System.out.println(number);
 		
 		
-		String sql ="select * from notice_attachment where id = ?";
+		String sql ="select * from notice_attachment where number = ?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, number);
 		ResultSet rs = ps.executeQuery();
@@ -26,7 +26,7 @@
 			object.put("realname",rs.getString("realname"));
 			object.put("path",rs.getString("path"));
 			object.put("size",rs.getString("size"));	
-			System.out.println("notice ok");
+			System.out.println("notice_attachment ok");
 			array.add(object);			
 		}
 		out.print(array.toJSONString());
