@@ -12,7 +12,7 @@
 		ResultSet rs;
 		
 		//String division = request.getParameter("division");
-		String sql ="select S.name, S.number,S.division, K.divisiondetail,S.startdate,S.enddate from subject as S, subjectkind as K where S.division=K.division and S.status = "+"?"+" limit 5";
+		String sql ="select S.name, S.number,S.division, K.divisiondetail,S.startdate,S.enddate from subject as S, subjectkind as K where S.division=K.division and S.status = "+"?"+" limit 3";
 		
 	
 		ps = con.prepareStatement(sql);

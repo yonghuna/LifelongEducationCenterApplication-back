@@ -27,6 +27,7 @@
 			
 			object.put("number",rs.getInt("number"));
 			object.put("title",rs.getString("title"));
+			object.put("name",rs.getString("name"));
 			object.put("reportingdate",rs.getString("reportingdate"));
 			object.put("contents",rs.getString("contents"));
 			object.put("id",rs.getString("id"));
