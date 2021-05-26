@@ -12,31 +12,24 @@
 		ResultSet rs;
 		
 		int number = Integer.parseInt(request.getParameter("number"));
-		String id = request.getParameter("id");
+	
 		
 		System.out.println(number);
-		String sql ="select U.phonenumber, U.name , S.name as subjectname, S.studyfee, E.paymentnumber from enrollment as E , subject as S, user as U where E.id = U.id and E.subjectnumber = S.number and E.id = ? and E.subjectnumber = ?";
-	
+		String sql ="select count(number) from qna_post WHERE number = ?";
 		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setString(1, id);
-		ps.setInt(2, number);
+		ps.setInt(1, number);
 	
 		
 		System.out.println(" >>> SQL : " + sql + "<<<");
 		rs = ps.executeQuery();
 		
 		
-	
 		if(rs.next()){
-			object.put("phonenumber",rs.getString("phonenumber"));
-			object.put("name",rs.getString("name"));
-			object.put("subjectname",rs.getString("subjectname"));
-			object.put("studyfee",rs.getString("studyfee"));
-			object.put("paymentnumber",rs.getString("paymentnumber"));
-	
+			object.put("count",rs.getInt("count(number)"));
+			System.out.println("postnumber ok");
 		}
 		out.print(object.toJSONString());
-		System.out.println("payment ok");
+		
 	}catch(Exception e){
 		response.setStatus(400);
 		System.out.println("error : " + e);
