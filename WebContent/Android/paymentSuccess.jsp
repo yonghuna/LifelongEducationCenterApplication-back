@@ -15,7 +15,8 @@
 		
 		
 		String payment = request.getParameter("payment");
-		String id= request.getParameter("id"); 
+		String id= request.getParameter("id");
+		int number= Integer.parseInt(request.getParameter("number")); 
 	
 		 
 		
@@ -26,11 +27,11 @@
 		
 	
 		try{
-		
-				sql="update enrollment set payment = ? where id = ?";
+				sql="update enrollment set payment = ? where id = ? subjectnumber = ?";
 				PreparedStatement ps = con.prepareStatement(sql);
 				ps.setString(1, payment);
 				ps.setString(2, id);
+				ps.setInt(3, number);
 				ps.execute();
 				jObject.put("result", "ok");
 				System.out.println("payment in ok");
