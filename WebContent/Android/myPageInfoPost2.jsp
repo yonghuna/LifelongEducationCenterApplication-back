@@ -55,7 +55,7 @@
 				ps.setString(6, education);
 				ps.setString(7, school);
 				ps.setString(8, major);
-				ps.setString(9, addressnumber);
+				ps.setString(9, admissionmajor);
 				ps.setString(10, id);
 				ps.execute();
 				jObject.put("result", "ok");
@@ -70,7 +70,7 @@
 				ps.setString(5, education);
 				ps.setString(6, school);
 				ps.setString(7, major);
-				ps.setString(8, addressnumber);
+				ps.setString(8, admissionmajor);
 				ps.setString(9, id);
 				ps.execute();
 				jObject.put("result", "ok");
