@@ -24,7 +24,7 @@
 		System.out.println(id);
 
 		try{
-				sql="update enrollment set payment = ? where id = ? subjectnumber = ?";
+				sql="update enrollment set payment = ? where id = ? and subjectnumber = ?";
 				PreparedStatement ps = con.prepareStatement(sql);
 				ps.setString(1, payment);
 				ps.setString(2, id);
