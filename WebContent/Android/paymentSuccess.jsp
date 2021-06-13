@@ -23,9 +23,6 @@
 		System.out.println(payment);
 		System.out.println(id);
 
-		
-		
-	
 		try{
 				sql="update enrollment set payment = ? where id = ? subjectnumber = ?";
 				PreparedStatement ps = con.prepareStatement(sql);
@@ -33,11 +30,11 @@
 				ps.setString(2, id);
 				ps.setInt(3, number);
 				ps.execute();
-				jObject.put("result", "ok");
+				
 				System.out.println("payment in ok");
 			
 		}catch(Exception e){
-			jObject.put("result", "false");
+			
 			System.out.println("payment update false : " + e);
 		}
 		
